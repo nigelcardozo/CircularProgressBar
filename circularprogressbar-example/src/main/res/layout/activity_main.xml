@@ -15,6 +15,7 @@
         android:gravity="center"
         android:orientation="vertical">
 
+
         <com.mikhaellopez.circularprogressbar.CircularProgressBar
             android:id="@+id/circularProgressbar"
             android:layout_width="wrap_content"
@@ -25,6 +26,74 @@
             app:cpb_progressbar_width="20dp" />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/horizontal_margin"
+            android:layout_marginRight="@dimen/horizontal_margin"
+            android:layout_marginTop="50dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                android:id="@+id/semiCircularProgressbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cpb_background_progressbar_color="#b6bbd8"
+                app:cpb_background_progressbar_width="10dp"
+                app:cpb_progressbar_color="#3f51b5"
+                app:cpb_progressbar_width="20dp"
+                app:cpb_semi_circle="true"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/horizontal_margin"
+            android:layout_marginRight="@dimen/horizontal_margin"
+            android:layout_marginTop="50dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <com.mikhaellopez.circularprogressbar.SemiCircularFuelGauge
+                android:id="@+id/semiCircularFuelGauge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cpb_background_progressbar_color="#b6bbd8"
+                app:cpb_background_progressbar_width="10dp"
+                app:cpb_progressbar_color="#3f51b5"
+                app:cpb_progressbar_width="10dp"
+                app:cpb_semi_circle="true"
+                app:scfg_show_needle="true"
+                app:scfg_needle_color="#388E3C"
+                app:scfg_needle_width="3dp"
+                app:scfg_needle_half_size="true"
+                app:scfg_show_markers="true"
+                app:scfg_marker_density="16dp"
+                app:scfg_marker_separation="36"
+                app:scfg_show_gauge_text="true"
+                app:scfg_gauge_text_color="#ffffff"
+                app:scfg_gauge_text_background_color="#000000"
+                app:scfg_gauge_text_size="30"
+                app:scfg_gauge_text_fill_background="true"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="240dp"

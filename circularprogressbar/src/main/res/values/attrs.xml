@@ -5,6 +5,23 @@
         <attr name="cpb_background_progressbar_color" format="color" />
         <attr name="cpb_progressbar_width" format="dimension" />
         <attr name="cpb_background_progressbar_width" format="dimension" />
+        <attr name="cpb_semi_circle" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="SemiCircularFuelGauge">
+        <attr name="scfg_show_needle" format="boolean" />
+        <attr name="scfg_needle_color" format="color" />
+        <attr name="scfg_needle_width" format="dimension" />
+        <attr name="scfg_needle_half_size" format="boolean" />
+        <attr name="scfg_show_markers" format="boolean" />
+        <attr name="scfg_marker_color" format="color" />
+        <attr name="scfg_marker_density" format="dimension" />
+        <attr name="scfg_marker_separation" format="integer" />
+        <attr name="scfg_show_gauge_text" format="boolean" />
+        <attr name="scfg_gauge_text_color" format="color" />
+        <attr name="scfg_gauge_text_background_color" format="color" />
+        <attr name="scfg_gauge_text_size" format="float" />
+        <attr name="scfg_gauge_text_fill_background" format="boolean" />
     </declare-styleable>
 
 </resources>

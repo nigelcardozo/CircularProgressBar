@@ -15,10 +15,13 @@ import android.widget.SeekBar;
 import com.larswerkman.lobsterpicker.OnColorListener;
 import com.larswerkman.lobsterpicker.sliders.LobsterShadeSlider;
 import com.mikhaellopez.circularprogressbar.CircularProgressBar;
+import com.mikhaellopez.circularprogressbar.SemiCircularFuelGauge;
 
 public class MainActivity extends AppCompatActivity {
 
     private CircularProgressBar circularProgressBar;
+    private CircularProgressBar semiCircularProgressBar;
+    private SemiCircularFuelGauge semiCircularFuelGauge;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +31,21 @@ public class MainActivity extends AppCompatActivity {
         circularProgressBar = (CircularProgressBar) findViewById(R.id.circularProgressbar);
         circularProgressBar.setProgressWithAnimation(65);
 
+        semiCircularProgressBar = (CircularProgressBar) findViewById(R.id.semiCircularProgressbar);
+        semiCircularProgressBar.setProgressWithAnimation(65);
+
+        semiCircularFuelGauge = (SemiCircularFuelGauge) findViewById(R.id.semiCircularFuelGauge);
+        semiCircularFuelGauge.setText("65", 0, 0);
+        semiCircularFuelGauge.setProgressWithAnimation(65);
+
         // PROGRESS
         ((SeekBar) findViewById(R.id.seekBarProgress)).setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 circularProgressBar.setProgress(progress);
+                semiCircularProgressBar.setProgress(progress);
+                semiCircularFuelGauge.setText(Integer.toString(progress), 0, 0);
+                semiCircularFuelGauge.setProgress(progress);
             }
 
             @Override
@@ -49,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 circularProgressBar.setProgressBarWidth(progress * getResources().getDisplayMetrics().density);
+                semiCircularProgressBar.setProgressBarWidth(progress * getResources().getDisplayMetrics().density);
+                semiCircularFuelGauge.setProgressBarWidth(progress * getResources().getDisplayMetrics().density);
             }
 
             @Override
@@ -65,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 circularProgressBar.setBackgroundProgressBarWidth(progress * getResources().getDisplayMetrics().density);
+                semiCircularProgressBar.setBackgroundProgressBarWidth(progress * getResources().getDisplayMetrics().density);
+                semiCircularFuelGauge.setBackgroundProgressBarWidth(progress * getResources().getDisplayMetrics().density);
             }
 
             @Override
@@ -82,6 +99,10 @@ public class MainActivity extends AppCompatActivity {
             public void onColorChanged(@ColorInt int color) {
                 circularProgressBar.setColor(color);
                 circularProgressBar.setBackgroundColor(adjustAlpha(color, 0.3f));
+                semiCircularProgressBar.setColor(color);
+                semiCircularProgressBar.setBackgroundColor(adjustAlpha(color, 0.3f));
+                semiCircularFuelGauge.setColor(color);
+                semiCircularFuelGauge.setBackgroundColor(adjustAlpha(color, 0.3f));
             }
 
             @Override

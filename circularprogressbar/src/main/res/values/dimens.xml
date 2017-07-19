@@ -3,5 +3,7 @@
     <!-- GENERAL -->
     <dimen name="default_stroke_width">7dp</dimen>
     <dimen name="default_background_stroke_width">3dp</dimen>
+    <dimen name="default_marker_density">16dp</dimen>
+    <dimen name="default_needle_stroke_width">3dp</dimen>
 
 </resources>

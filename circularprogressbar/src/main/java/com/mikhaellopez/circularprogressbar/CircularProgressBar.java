@@ -13,10 +13,12 @@ import android.view.animation.DecelerateInterpolator;
 
 /**
  * Created by Mikhael LOPEZ on 16/10/2015.
+ * Modified by Nigel Cardozo on 18/07/2017.
  */
 public class CircularProgressBar extends View {
 
     // Properties
+    private boolean isSemiCircle = false;
     private float progress = 0;
     private float strokeWidth = getResources().getDimension(R.dimen.default_stroke_width);
     private float backgroundStrokeWidth = getResources().getDimension(R.dimen.default_background_stroke_width);
@@ -24,10 +26,12 @@ public class CircularProgressBar extends View {
     private int backgroundColor = Color.GRAY;
 
     // Object used to draw
-    private int startAngle = -90;
-    private RectF rectF;
-    private Paint backgroundPaint;
-    private Paint foregroundPaint;
+    protected int startAngle = -90;
+    protected RectF rectF;
+    protected Paint backgroundPaint;
+    protected Paint foregroundPaint;
+
+    private boolean doNotDraw=false;
 
     //region Constructor & Init Method
     public CircularProgressBar(Context context, AttributeSet attrs) {
@@ -48,6 +52,7 @@ public class CircularProgressBar extends View {
             // Color
             color = typedArray.getInt(R.styleable.CircularProgressBar_cpb_progressbar_color, color);
             backgroundColor = typedArray.getInt(R.styleable.CircularProgressBar_cpb_background_progressbar_color, backgroundColor);
+            isSemiCircle = typedArray.getBoolean(R.styleable.CircularProgressBar_cpb_semi_circle, false);
         } finally {
             typedArray.recycle();
         }
@@ -70,9 +75,18 @@ public class CircularProgressBar extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.drawOval(rectF, backgroundPaint);
-        float angle = 360 * progress / 100;
-        canvas.drawArc(rectF, startAngle, angle, false, foregroundPaint);
+
+        if (!doNotDraw){
+            if (isSemiCircle){
+                canvas.drawArc(rectF, 180, 180, false, backgroundPaint);
+                float angle = 180 * progress / 100;
+                canvas.drawArc(rectF, 180, angle, false, foregroundPaint);
+            } else {
+                canvas.drawOval(rectF, backgroundPaint);
+                float angle = 360 * progress / 100;
+                canvas.drawArc(rectF, startAngle, angle, false, foregroundPaint);
+            }
+        }
     }
     //endregion
 
@@ -170,4 +184,9 @@ public class CircularProgressBar extends View {
         objectAnimator.start();
     }
     //endregion
+
+    //This will prevent the onDraw method from drawing. Useful if we need to ensure the z order
+    public void setDoNotDraw(boolean doNotDraw){
+        this.doNotDraw = doNotDraw;
+    }
 }

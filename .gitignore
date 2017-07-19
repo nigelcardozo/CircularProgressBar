@@ -3,4 +3,7 @@
 /build
 /.idea
 /CircleProgressBar.iml
+/CircularProgressBarFork.iml
 /gradle.properties
+.DS_Store
+.DS_Store?
